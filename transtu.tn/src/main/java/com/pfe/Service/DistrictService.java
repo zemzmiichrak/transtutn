@@ -57,7 +57,11 @@ public class DistrictService {
     public Set<District> getDistrictsByIds(Set<Long> districtIds) {
         return districtRepository.findAllById(districtIds).stream().collect(Collectors.toSet());
     }
-
+    
+    public Set<District> getDistrictsByLabels(Set<String> districtLabels) {
+        List<District> districtsList = districtRepository.findByLabelIn(districtLabels);
+        return districtsList.stream().collect(Collectors.toSet());
+    }
 
 	
 }

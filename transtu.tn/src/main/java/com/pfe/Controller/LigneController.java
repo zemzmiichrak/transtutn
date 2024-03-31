@@ -29,14 +29,13 @@ public class LigneController {
         List<Ligne> lignes = ligneService.getAllLignes();
         return ResponseEntity.ok(lignes);
     }
-
     @PostMapping(path = "/addLigne")
     public ResponseEntity<Ligne> addLigne(@RequestBody LigneRequest addLigneRequest) {
         String code = addLigneRequest.getCode();
         String label = addLigneRequest.getLabel();
-        Set<Long> districtIds = addLigneRequest.getDistrictIds();
+        Set<String> districtLabels = addLigneRequest.getDistrictLabels();
 
-        Ligne newLigne = ligneService.addLigne(code, label, districtIds);
+        Ligne newLigne = ligneService.addLigne(code, label, districtLabels);
         return ResponseEntity.status(HttpStatus.CREATED).body(newLigne);
     }
     @PutMapping(path="/updateLigne/{id}")
@@ -46,12 +45,11 @@ public class LigneController {
     ) {
         String newCode = updateLigneRequest.getCode();
         String newLabel = updateLigneRequest.getLabel();
-        Set<Long> newDistrictIds = updateLigneRequest.getDistrictIds();
+        Set<String> newDistrictLabels = updateLigneRequest.getDistrictLabels();
 
-        Ligne updatedLigne = ligneService.updateLigne(id, newCode, newLabel, newDistrictIds);
+        Ligne updatedLigne = ligneService.updateLigne(id, newCode, newLabel, newDistrictLabels);
         return ResponseEntity.ok(updatedLigne);
     }
-
 
     @DeleteMapping(path="/deleteLigne/{id}")
     public ResponseEntity<String> deleteLigne(@PathVariable Long id) {

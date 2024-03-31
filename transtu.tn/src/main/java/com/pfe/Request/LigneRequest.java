@@ -8,7 +8,9 @@ public class LigneRequest {
 
 	  private String label;
 
-	  private Set<Long> districtIds;
+
+	private Set<String> districtLabels;
+	  
 
 	public String getCode() {
 		return code;
@@ -26,23 +28,26 @@ public class LigneRequest {
 		this.label = label;
 	}
 
-	public Set<Long> getDistrictIds() {
-		return districtIds;
+
+	public void setDistrictLabels(Set<String> districtLabels) {
+		this.districtLabels = districtLabels;
 	}
 
-	public void setDistrictIds(Set<Long> districtIds) {
-		this.districtIds = districtIds;
-	}
 
-	public LigneRequest(String code, String label, Set<Long> districtIds) {
+	public LigneRequest(String code, String label, Set<String> districtLabels) {
 		super();
 		this.code = code;
 		this.label = label;
-		this.districtIds = districtIds;
+		this.districtLabels = districtLabels;
 	}
 
 	public LigneRequest() {
 		
 	}
+
+	public Set<String> getDistrictLabels() {
+	    return districtLabels;
+	}
+	
 
 }
